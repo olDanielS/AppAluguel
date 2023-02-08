@@ -1,20 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
+import Routes from "./src/Pages/routes";
+import { useFonts,Montserrat_400Regular, Montserrat_500Medium, Montserrat_700Bold } from '@expo-google-fonts/montserrat';
+import {ActivityIndicator} from 'react-native';
+import { StatusBar } from "react-native";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+export default function App(){
+  let [fonts] = useFonts({
+    Montserrat_400Regular,
+    Montserrat_500Medium,
+    Montserrat_700Bold
+})
+
+  if(!fonts){
+      <ActivityIndicator size={32} color='red'/>
+    }
+  
+  return(
+    <>
+    <StatusBar backgroundColor={'#121214'} barStyle='light-content'/>
+    <NavigationContainer>
+        <Routes/>
+    </NavigationContainer>
+    </>
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
