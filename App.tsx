@@ -12,7 +12,7 @@ export default function App(){
 })
 
   if(!fonts){
-      <ActivityIndicator size={32} color='red'/>
+      return false;
     }
   
   return(

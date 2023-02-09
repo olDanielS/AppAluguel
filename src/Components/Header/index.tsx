@@ -1,32 +1,19 @@
-import {View, Text, StyleSheet} from 'react-native';
 import Feather from '@expo/vector-icons/Feather';
-
+import { Container, Title } from './styles';
+import { TouchableOpacity } from 'react-native';
 
 interface TitleHeader{
     title: String
 }
 
 export default function Header({title}: TitleHeader){
-   
     return(
-        <View style={styles.container}>
-            <Text style={styles.title}>{title}</Text>
-            <Feather name='shopping-bag' size={32}/>
-        </View>
+        <Container>
+            <Title>{title}</Title>
+            <TouchableOpacity>
+                <Feather name='shopping-bag' size={32}/>
+            </TouchableOpacity>
+        </Container>
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        width: '100%',
-        backgroundColor: '#FFF',
-        marginTop: 10,
-        padding: 10,
-        flexDirection: 'row',
-        justifyContent: 'space-between'
-    },
-    title: {
-        fontSize: 20,
-        fontFamily: "Montserrat_700Bold"
-    }
-})
