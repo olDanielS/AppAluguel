@@ -14,7 +14,11 @@ export default function Routes(){
                     headerShown: false,
                 }}
             />
-            <Stack.Screen name="Details" component={Details}/>
+            <Stack.Screen name="Details" component={Details}
+              options={{
+                title: 'Detalhes'
+            }}
+            />
         </Stack.Navigator>
     )  
 }

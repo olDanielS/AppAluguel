@@ -21,10 +21,11 @@ export const SearchText = styled.TextInput`
    font-size: 18px;
    padding-left: 10px;
    `
-export const TextNews = styled.Text`
+export const TitleSections = styled.Text`
    font-size: 24px;
    font-family: 'Montserrat_500Medium';
    margin-bottom: 10px;
+   margin-top: 20px;
    opacity: 0.8;
 `
 export const FlatNews = styled.FlatList`

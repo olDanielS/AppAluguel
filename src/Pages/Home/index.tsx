@@ -3,17 +3,20 @@ import { View, Text, Keyboard, TouchableWithoutFeedback, FlatList } from 'react-
 import {
 	Container, AreaSafe,
 	SearchText, InputArea,
-	TextNews,FlatNews
+	TitleSections
 } from './styles';
 import Feather from '@expo/vector-icons/Feather';
 
 import Header from '../../Components/Header';
 import HorizontalNews from '../../Components/HorizontalNews';
+import HorizontalCloseto from '../../Components/HorizontalCloseTo';
 
-
-
+import { useNavigation } from '@react-navigation/native';
 
 export default function Home() {
+
+	const navigation = useNavigation();
+
 	const [newsList, setNewsList] = useState([
 			{id: 1, title: 'Casa de Praia', price: '1.100,00',
 			 linkImage: 'https://www.decorfacil.com/wp-content/uploads/2017/10/20171015casas-de-praia-2.jpg',
@@ -30,6 +33,15 @@ export default function Home() {
 			
 			 ])
 	
+	function handleSubmitNews(item:any){
+		navigation.navigate("Details", {
+			title: item.title,
+			linkImage: item.linkImage,
+			price: item.price,
+			description: item.description,
+
+		})
+	}
 
 	return (
 		<Container>
@@ -42,15 +54,22 @@ export default function Home() {
 							placeholder='O que está procurando?'
 						/>
 					</InputArea>
-					<TextNews>Novidades</TextNews>
+					<TitleSections>Novidades</TitleSections>
 					<FlatList
 						keyExtractor={(item) => item.id.toString()}
 						data={newsList}
-						renderItem={({item}) => <HorizontalNews data={item}/>}
+						renderItem={({item}) => <HorizontalNews data={item} submit={() => handleSubmitNews(item)}/>}
 						horizontal
 						showsHorizontalScrollIndicator={false}
 					/>
-
+					<TitleSections>Próximos de você</TitleSections>
+					<FlatList
+						keyExtractor={(item) => item.id.toString()}
+						data={newsList}
+						renderItem={({item}) => <HorizontalCloseto data={item} />}
+						horizontal
+						showsHorizontalScrollIndicator={false}
+					/>
 
 					<Text>Teste</Text>
 					<Text>Teste</Text>
